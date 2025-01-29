@@ -43,3 +43,17 @@ const circleElements = svg
   .attr("cy", (c) => y(c.y))
   .attr("r", (c) => c.r)
   .style("fill", () => `hsl(${Math.random() * 360},100%,50%)`); // Random color
+
+const randomNumBetween = (num) => {
+  return Math.floor(Math.random() * num + 1);
+};
+const updateCircles = () => {
+  circleElements
+    .data(circles)
+    .transition()
+    .duration(1000)
+    .attr("cx", () => x(randomNumBetween(MAX_X)))
+    .attr("cy", () => y(randomNumBetween(MAX_Y)))
+    .attr("r", () => randomNumBetween(MAX_R))
+    .style("fill", () => `hsl(${Math.random() * 360},100%,50%)`);
+};
