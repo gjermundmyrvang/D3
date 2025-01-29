@@ -9,3 +9,11 @@ const svg = d3
   .attr("height", height + margin.top + margin.bottom)
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("coffee_energy.csv").then((data) => {
+  data.forEach((d) => {
+    d.coffeeAmount = +d.coffeeAmount;
+    d.energyLevel = +d.energyLevel;
+  });
+  console.log(data);
+});
