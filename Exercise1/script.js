@@ -19,3 +19,17 @@ const MAX_R = 200;
 
 const x = d3.scaleLinear().domain([0, MAX_X]).range([0, width]);
 const y = d3.scaleLinear().domain([0, MAX_Y]).range([height, 0]);
+
+// Generates a given number of circles with initial properties
+const generateCircles = (numC) => {
+  const circles = [...Array(numC)].map(() => {
+    const x = 50;
+    const y = 50;
+    const r = 50;
+    return { x, y, r };
+  });
+
+  return circles;
+};
+
+let circles = generateCircles(3);
