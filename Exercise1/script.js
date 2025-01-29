@@ -57,3 +57,6 @@ const updateCircles = () => {
     .attr("r", () => randomNumBetween(MAX_R))
     .style("fill", () => `hsl(${Math.random() * 360},100%,50%)`);
 };
+
+// Calling updateCircles method every 2 seconds
+// d3.interval(updateCircles, 2000);
