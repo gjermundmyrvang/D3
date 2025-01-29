@@ -33,3 +33,13 @@ const generateCircles = (numC) => {
 };
 
 let circles = generateCircles(3);
+
+const circleElements = svg
+  .append("g")
+  .selectAll("dot")
+  .data(circles)
+  .join("circle")
+  .attr("cx", (c) => x(c.x))
+  .attr("cy", (c) => y(c.y))
+  .attr("r", (c) => c.r)
+  .style("fill", () => `hsl(${Math.random() * 360},100%,50%)`); // Random color
