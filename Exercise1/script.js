@@ -59,4 +59,4 @@ const updateCircles = () => {
 };
 
 // Calling updateCircles method every 2 seconds
-// d3.interval(updateCircles, 2000);
+d3.interval(updateCircles, 2000);
