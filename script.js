@@ -24,6 +24,12 @@ const data = {
       group: 4,
       href: "Exercise2/",
     },
+    {
+      id: 5,
+      name: "Github",
+      group: 5,
+      href: "https://www.github.com/gjermundmyrvang",
+    },
   ],
   links: [
     {
@@ -37,6 +43,10 @@ const data = {
     {
       source: 3,
       target: 4,
+    },
+    {
+      source: 4,
+      target: 5,
     },
   ],
 };
