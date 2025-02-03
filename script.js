@@ -18,6 +18,12 @@ const data = {
       group: 3,
       href: "UfoData/",
     },
+    {
+      id: 3,
+      name: "Exercise 2",
+      group: 4,
+      href: "Exercise2/",
+    },
   ],
   links: [
     {
@@ -27,6 +33,10 @@ const data = {
     {
       source: 2,
       target: 3,
+    },
+    {
+      source: 3,
+      target: 4,
     },
   ],
 };
