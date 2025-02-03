@@ -19,7 +19,7 @@ const data = {
       href: "UfoData/",
     },
     {
-      id: 3,
+      id: 4,
       name: "Exercise 2",
       group: 4,
       href: "Exercise2/",
