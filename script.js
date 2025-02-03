@@ -59,7 +59,8 @@ const svg = d3
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
   .append("g")
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+  .style("background-color", "grey");
 
 const link = svg
   .append("g")
@@ -72,8 +73,8 @@ const link = svg
 
 const node = svg
   .append("g")
-  .attr("stroke", "#fff")
-  .attr("stroke-width", 1.5)
+  .attr("stroke", "#f1f1f1")
+  .attr("stroke-width", 3)
   .selectAll("g")
   .data(nodes)
   .join("g")
