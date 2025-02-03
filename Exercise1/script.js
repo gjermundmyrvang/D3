@@ -1,11 +1,10 @@
 const width = window.innerWidth;
 const height = window.innerHeight;
 
-// Add <svg> inside body
+// Add <svg> inside canvas
 const svg = d3
   .select("#canvas")
   .append("svg")
-  // When using the width and height properties later this ensures some padding
   .attr("width", width)
   .attr("height", height)
   .attr("viewBox", `0 0 ${width} ${height}`)
