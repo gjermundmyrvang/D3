@@ -5,5 +5,7 @@
 
 #canvas {
   width: 100vw;
-  height: 800;
+  height: 800px;
+  justify-content: center;
+  align-items: center;
 }
