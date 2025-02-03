@@ -11,9 +11,6 @@ d3.csv("observations.csv").then((data) => {
     return acc;
   }, {});
 
-  // Test
-  const test = groupedData["analog"];
-  console.log(test);
   const width = 450,
     height = 450,
     margin = 40;
@@ -23,44 +20,47 @@ d3.csv("observations.csv").then((data) => {
   const color = d3.scaleOrdinal().range(d3.schemeSet2);
 
   const pie = d3.pie().value((d) => d.db);
-  const data_ready = pie(test);
-
   const arcGenerator = d3.arc().innerRadius(0).outerRadius(radius);
 
-  const svg = d3
-    .select("#canvas")
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height + 30)
-    .append("g")
-    .attr("transform", `translate(${width / 2}, ${height / 2})`);
+  const keys = Object.keys(groupedData);
 
-  svg
-    .append("text")
-    .data(data_ready)
-    .attr("x", 0)
-    .attr("y", radius + 15)
-    .attr("text-anchor", "middle")
-    .style("font-size", 18)
-    .style("font-weight", "bold")
-    .text((d) => d.data.place);
+  keys.forEach((place) => {
+    const data_ready = pie(groupedData[place]);
 
-  svg
-    .selectAll("mySlices")
-    .data(data_ready)
-    .join("path")
-    .attr("d", arcGenerator)
-    .attr("fill", (d) => color(d.data.db))
-    .attr("stroke", "black")
-    .style("stroke-width", "2px")
-    .style("opacity", 0.7);
+    const svg = d3
+      .select("#canvas")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height + 50)
+      .append("g")
+      .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
-  svg
-    .selectAll("mySlices")
-    .data(data_ready)
-    .join("text")
-    .text((d) => d.data.time + ": " + d.data.db + "db")
-    .attr("transform", (d) => `translate(${arcGenerator.centroid(d)})`)
-    .style("text-anchor", "middle")
-    .style("font-size", 14);
+    svg
+      .append("text")
+      .attr("x", 0)
+      .attr("y", -radius - 20)
+      .attr("text-anchor", "middle")
+      .style("font-size", "18px")
+      .style("font-weight", "bold")
+      .text(place);
+
+    svg
+      .selectAll("mySlices")
+      .data(data_ready)
+      .join("path")
+      .attr("d", arcGenerator)
+      .attr("fill", (d) => color(d.data.db))
+      .attr("stroke", "black")
+      .style("stroke-width", "2px")
+      .style("opacity", 0.7);
+
+    svg
+      .selectAll("mySlices")
+      .data(data_ready)
+      .join("text")
+      .text((d) => d.data.time + ": " + d.data.db + "db")
+      .attr("transform", (d) => `translate(${arcGenerator.centroid(d)})`)
+      .style("text-anchor", "middle")
+      .style("font-size", "14px");
+  });
 });
