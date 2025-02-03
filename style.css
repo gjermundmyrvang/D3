@@ -53,8 +53,7 @@ nav ul li a:hover {
   justify-content: center;
   align-items: center;
   width: 100vw; /* Full width */
-  height: 90vh; /* Almost full page height */
-  min-height: 600px;
+  height: 800; /* Almost full page height */
   background-color: #1d1d1d;
 }
 

@@ -31,14 +31,13 @@ const data = {
   ],
 };
 
-const margin = { top: 50, right: 30, bottom: 40, left: 70 },
-  width = 1200 - margin.left - margin.right,
-  height = 800 - margin.top - margin.bottom;
-
 const color = d3.scaleOrdinal(d3.schemeCategory10);
 
 const links = data.links.map((d) => ({ ...d }));
 const nodes = data.nodes.map((d) => ({ ...d }));
+
+const height = 800;
+const width = window.innerWidth;
 
 const simulation = d3
   .forceSimulation(nodes)
@@ -50,17 +49,17 @@ const simulation = d3
       .distance(300)
   )
   .force("charge", d3.forceManyBody().strength(-300)) // Repels nodes
-  .force("x", d3.forceX(width / 2).strength(0.1)) // Centers nodes horizontally
-  .force("y", d3.forceY(height / 2).strength(0.1));
+  .force("x", d3.forceX(width / 2).strength(0.2)) // Centers nodes horizontally
+  .force("y", d3.forceY(height / 2).strength(0.2));
 
 const svg = d3
   .select("#canvas")
   .append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-  .style("background-color", "grey");
+  .attr("width", width)
+  .attr("height", height)
+  .attr("viewBox", `0 0 ${width} ${height}`)
+  .attr("preserveAspectRatio", "xMidYMid meet")
+  .append("g");
 
 const link = svg
   .append("g")
