@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Gajraj+One&family=Russo+One&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "Gajraj One", serif;
   margin: 0;
@@ -8,10 +13,9 @@ body {
 }
 
 header {
-  background-color: #fafafa;
   color: "#1d1d1d";
   text-align: center;
-  padding: 20px 0;
+  padding: 0px 0;
 }
 
 header h1 {
@@ -22,7 +26,8 @@ header h1 {
 
 nav {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 0px;
+  background-color: #4f4f4f;
 }
 
 nav ul {
@@ -33,6 +38,7 @@ nav ul {
 nav ul li {
   display: inline-block;
   margin: 10px 15px;
+  padding: 10px;
 }
 
 nav ul li a {
@@ -44,8 +50,8 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #1d1d1d;
-  border-bottom: 2px solid #1d1d1d;
+  color: #fafafa;
+  border-bottom: 2px solid #fafafa;
 }
 
 #canvas {
