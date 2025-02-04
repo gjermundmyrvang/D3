@@ -13,7 +13,7 @@ const svg = d3
 
 const MAX_X = 100;
 const MAX_Y = 100;
-const MAX_R = 200;
+const MAX_R = 50;
 
 const x = d3.scaleLinear().domain([0, MAX_X]).range([0, width]);
 const y = d3.scaleLinear().domain([0, MAX_Y]).range([height, 0]);
@@ -30,7 +30,18 @@ const generateCircles = (numC) => {
   return circles;
 };
 
-let circles = generateCircles(3);
+const generateRects = (numC) => {
+  const rects = [...Array(numC)].map(() => {
+    const x = 50;
+    const y = 50;
+    return { x, y };
+  });
+
+  return rects;
+};
+
+let circles = generateCircles(100);
+let rects = generateRects(100);
 
 const circleElements = svg
   .append("g")
@@ -40,6 +51,17 @@ const circleElements = svg
   .attr("cx", (c) => x(c.x))
   .attr("cy", (c) => y(c.y))
   .attr("r", (c) => c.r)
+  .style("fill", () => `hsl(${Math.random() * 360},100%,50%)`); // Random color
+
+const rectElements = svg
+  .append("g")
+  .selectAll("rect")
+  .data(rects)
+  .join("rect")
+  .attr("width", 100)
+  .attr("height", 100)
+  .attr("x", (c) => x(c.x))
+  .attr("y", (c) => y(c.y))
   .style("fill", () => `hsl(${Math.random() * 360},100%,50%)`); // Random color
 
 const randomNumBetween = (num) => {
@@ -54,7 +76,15 @@ const updateCircles = () => {
     .attr("cy", () => y(randomNumBetween(MAX_Y)))
     .attr("r", () => randomNumBetween(MAX_R))
     .style("fill", () => `hsl(${Math.random() * 360},100%,50%)`);
+
+  rectElements
+    .data(rects)
+    .transition()
+    .duration(1000)
+    .attr("x", () => x(randomNumBetween(MAX_X)))
+    .attr("y", () => y(randomNumBetween(MAX_Y)))
+    .style("fill", () => `hsl(${Math.random() * 360},100%,50%)`);
 };
 
 // Calling updateCircles method every 2 seconds
-d3.interval(updateCircles, 2000);
+//d3.interval(updateCircles, 2000);
