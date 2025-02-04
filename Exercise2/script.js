@@ -13,8 +13,8 @@ d3.csv("observations.csv").then((data) => {
 
   console.log(observations["log"]);
 
-  const width = 1000,
-    height = 1000,
+  const width = 800,
+    height = 800,
     margin = 120;
 
   const radius = Math.min(width, height) / 2 - margin;
@@ -41,7 +41,7 @@ d3.csv("observations.csv").then((data) => {
     .attr("width", width)
     .attr("height", height + 50)
     .attr("viewBox", `-${width / 2} -${height / 2}`)
-    .attr("preserveAspectRatio", "xMidYMid meet") // Ensures responsiveness
+    .attr("preserveAspectRatio", "xMidYMid meet") // Ensures responsivenessish
     .append("g")
     .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
