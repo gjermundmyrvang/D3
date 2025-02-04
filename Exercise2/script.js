@@ -19,7 +19,7 @@ d3.csv("observations.csv").then((data) => {
 
   const color = d3.scaleOrdinal().range(d3.schemeSet2);
 
-  const pie = d3.pie().value((d) => d.db);
+  const pie = d3.pie().value(10);
   const arcGenerator = d3.arc().innerRadius(0).outerRadius(radius);
 
   const keys = Object.keys(groupedData);
