@@ -3,9 +3,11 @@
   padding: 0;
 }
 
-#canvas {
-  width: 100vw;
-  height: 800px;
+.container {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100dvw;
+  height: 100dvh;
 }

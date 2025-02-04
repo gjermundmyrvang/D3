@@ -40,17 +40,10 @@ d3.csv("observations.csv").then((data) => {
     .append("svg")
     .attr("width", width)
     .attr("height", height + 50)
+    .attr("viewBox", `-${width / 2} -${height / 2}`)
+    .attr("preserveAspectRatio", "xMidYMid meet") // Ensures responsiveness
     .append("g")
     .attr("transform", `translate(${width / 2}, ${height / 2})`);
-
-  svg
-    .append("text")
-    .attr("x", 0)
-    .attr("y", -radius - 70)
-    .attr("text-anchor", "middle")
-    .style("font-size", "18px")
-    .style("font-weight", "bold")
-    .text("Day In The Life");
 
   svg
     .selectAll("mySlices")
@@ -88,6 +81,8 @@ d3.csv("observations.csv").then((data) => {
     })
     .style("text-anchor", "middle")
     .style("font-size", "14px");
+
+  rotatePieChart(svg, 10000, width, height);
 });
 
 const formatTime = (time) => {
@@ -98,4 +93,19 @@ const formatTime = (time) => {
     2,
     "0"
   )}`;
+};
+
+const rotatePieChart = (svg, duration, width, height) => {
+  let angle = 0;
+
+  function animate() {
+    angle = (angle + 0.1) % 360;
+    svg.attr(
+      "transform",
+      `translate(${width / 2}, ${height / 2}) rotate(${angle})`
+    );
+    requestAnimationFrame(animate);
+  }
+
+  animate();
 };
