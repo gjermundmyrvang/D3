@@ -26,8 +26,14 @@ const data = {
     },
     {
       id: 5,
-      name: "Github",
+      name: "Live coding",
       group: 5,
+      href: "LiveCode/",
+    },
+    {
+      id: 6,
+      name: "Github",
+      group: 6,
       href: "https://www.github.com/gjermundmyrvang",
     },
   ],
@@ -47,6 +53,10 @@ const data = {
     {
       source: 4,
       target: 5,
+    },
+    {
+      source: 5,
+      target: 6,
     },
   ],
 };
