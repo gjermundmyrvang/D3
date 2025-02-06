@@ -116,10 +116,26 @@ const renderMultiplePieCharts = () => {
       .attr("d", arcGenerator)
       .transition()
       .duration(1000)
-      .attr("d", d3.arc().innerRadius(0).outerRadius(radius))
+      .attr("d", d3.arc().innerRadius(100).outerRadius(radius))
       .attr("fill", (d) => color(d.data.db))
       .attr("stroke", "black")
       .style("stroke-width", "2px");
+
+    svg
+      .selectAll("path")
+      .on("mouseover", function (event, d) {
+        d3.select(this)
+          .style("cursor", "pointer")
+          .transition()
+          .duration(200)
+          .attr("transform", "scale(0.9)");
+      })
+      .on("mouseout", function (event, d) {
+        d3.select(this)
+          .transition()
+          .duration(200)
+          .attr("transform", "scale(1)");
+      });
 
     // Apply different text styling if sectors < 2
     if (groupedData[place].length == 1) {
