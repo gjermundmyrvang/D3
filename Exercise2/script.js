@@ -6,7 +6,7 @@ const readFile = async (file) => {
     db: +d.db,
     time: +d.time,
   }));
-  formatted.sort((a, b) => a.time - b.time);
+  formatted.sort((a, b) => a.db - b.db);
   return { log: formatted };
 };
 
@@ -46,11 +46,26 @@ const renderOnePieChart = () => {
       .attr("d", arcGenerator)
       .transition()
       .duration(1000)
-      .attr("d", d3.arc().innerRadius(0).outerRadius(radius))
+      .attr("d", d3.arc().innerRadius(150).outerRadius(radius))
       .attr("fill", (d) => color(d.data.db))
       .attr("stroke", "black")
       .style("stroke-width", "2px");
 
+    svg
+      .selectAll("path")
+      .on("mouseover", function (event, d) {
+        d3.select(this)
+          .style("cursor", "pointer")
+          .transition()
+          .duration(200)
+          .attr("transform", "scale(0.9)");
+      })
+      .on("mouseout", function (event, d) {
+        d3.select(this)
+          .transition()
+          .duration(200)
+          .attr("transform", "scale(1)");
+      });
     generateLabelArcStyle(data_ready);
   });
 };
